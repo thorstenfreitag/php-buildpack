@@ -140,8 +140,14 @@ def _get_compiled_modules(ctx):
 def validate_php_extensions(ctx):
     filtered_extensions = []
     requested_extensions = ctx['PHP_EXTENSIONS']
+    _log.debug('Requested extensions:')
+    _log.debug(requested_extensions)
     supported_extensions = _get_supported_php_extensions(ctx)
+    _log.debug('Supported extensions:')
+    _log.debug(supported_extensions)
     compiled_modules = _get_compiled_modules(ctx)
+    _log.debug('Compiled modules :')
+    _log.debug(compiled_modules)
 
     for extension in requested_extensions:
         if extension in supported_extensions:
@@ -196,7 +202,7 @@ def convert_php_extensions(ctx):
     ctx['PHP_EXTENSIONS'] = \
         "\n".join(["extension=%s.so" % ex
                    for ex in ctx['PHP_EXTENSIONS'] if ex not in SKIP])
-    _log.debug('Hard-coding PHP extensions')
+#    _log.debug('Hard-coding PHP extensions')
 #    ctx['PHP_EXTENSIONS'] =  ["extension=bz2.so" "extension=zlib.so" "extension=curl.so" "extension=pdo.so" "extension=pdo_sqlite.so"] 
     path = ''
     ctx['ZEND_EXTENSIONS'] = \

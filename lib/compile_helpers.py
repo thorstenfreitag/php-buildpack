@@ -156,7 +156,7 @@ def validate_php_extensions(ctx):
         elif extension.lower() not in compiled_modules:
             print("The extension '%s' is not provided by this buildpack." % extension, file=os.sys.stderr)
 
-    #ctx['PHP_EXTENSIONS'] = filtered_extensions
+    ctx['PHP_EXTENSIONS'] = filtered_extensions
 
 
 def _parse_extensions_from_ini_file(file):

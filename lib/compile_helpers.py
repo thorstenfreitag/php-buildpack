@@ -191,11 +191,13 @@ def include_fpm_d_confs(ctx):
 
 
 def convert_php_extensions(ctx):
-    _log.debug('Converting PHP extensions')
-    SKIP = ('cli', 'pear', 'cgi')
-    ctx['PHP_EXTENSIONS'] = \
-        "\n".join(["extension=%s.so" % ex
-                   for ex in ctx['PHP_EXTENSIONS'] if ex not in SKIP])
+#    _log.debug('Converting PHP extensions')
+#    SKIP = ('cli', 'pear', 'cgi')
+#    ctx['PHP_EXTENSIONS'] = \
+#        "\n".join(["extension=%s.so" % ex
+#                   for ex in ctx['PHP_EXTENSIONS'] if ex not in SKIP])
+    _log.debug('Hard-coding PHP extensions')
+    ctx['PHP_EXTENSIONS'] =  ["extension=bz2.so" "extension=zlib.so" "extension=curl.so" "extension=pdo.so" "extension=pdo_sqlite.so"] 
     path = ''
     ctx['ZEND_EXTENSIONS'] = \
         "\n".join(['zend_extension="%s"' % os.path.join(path, "%s.so" % ze)

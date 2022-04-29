@@ -140,7 +140,7 @@ def _get_compiled_modules(ctx):
 def validate_php_extensions(ctx):
     filtered_extensions = []
     #requested_extensions = ctx['PHP_EXTENSIONS']
-    requested_extensions = ['bz2', 'zlib', 'curl', 'pdo', 'pdo_sqlite']
+    requested_extensions = ['bz2', 'zlib', 'curl', 'mbstring', 'pdo', 'pdo_sqlite']
     _log.debug('Requested extensions:')
     _log.debug(requested_extensions)
     supported_extensions = _get_supported_php_extensions(ctx)
